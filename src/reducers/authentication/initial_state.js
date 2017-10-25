@@ -4,6 +4,7 @@ module.exports = {
   auth: {
     currently: C.NOTHING,
     email: null,
-    uid: null
+    uid: null,
+    role: "no_yet"
   }
 }

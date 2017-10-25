@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 let C = require("../constants/authentication/authentication.js")
 
 import ClientProfileContainer from './client/client_profile_container'
@@ -12,7 +13,8 @@ class MainProfileContainer extends Component {
   constructor(props){
     super(props)
 
-    }
+  }
+
 
   render(){
 		let p = this.props
@@ -37,6 +39,12 @@ class MainProfileContainer extends Component {
             <ClientProfileContainer />
           </div>
         )
+      case "no":
+        return (
+          <div>
+            <Redirect to = "/authentication"/>
+          </div>
+        )
       default:
         return(
           <div>
@@ -56,10 +64,9 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return bindActionCreators(
     {
-
     },
     dispatch
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(MainProfileContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(MainProfileContainer))

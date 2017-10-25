@@ -1,5 +1,6 @@
 import * as firebase from 'firebase';
 let C = require("../../constants/authentication/authentication.js")
+import { routerMiddleware, push } from 'react-router-redux'
 
 export function startListeningToAuth(){
   return function(dispatch,getState){
@@ -40,7 +41,7 @@ export function passwordSignup(email, pass, role, address){
   let authRef = firebase.database().ref().child('all_users')
   return function(dispatch){
     dispatch({type:C.ATTEMPTING})
-    firebase.auth().createUserWithEmailAndPassword(email, password).then( () => {
+    firebase.auth().createUserWithEmailAndPassword(email, pass).then( () => {
       var user = firebase.auth().currentUser
       authRef.child(user.uid).set({
         email: email,

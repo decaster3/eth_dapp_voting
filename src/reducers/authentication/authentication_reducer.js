@@ -11,9 +11,11 @@ module.exports = function(currentstate = initialState.auth,action){
       };
     case C.LOGOUT:
       return {
-        currently: C.SIGNED_IN,
+        ...currentstate,
+        currently: C.ANONYMOUS,
         email: "guest",
-        uid: null
+        uid: null,
+        role: "no"
       };
     case C.SIGNIN_USER:
       return {

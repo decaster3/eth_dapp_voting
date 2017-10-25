@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from 'react-router-dom';
+import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 import App from './components/App';
 import AuthenticationContainer from './containers/authentication/authentication_container'
 import { connect } from 'react-redux';
@@ -11,27 +11,15 @@ export const Routes = (props) => {
     let userState = props.user.currently;
     var loggedIn = userState == C.SIGNED_IN;
 
-    return (<div>
-              <Switch>
-
-                <Route exact path="/" render={() => (
-                  loggedIn ? (
-                    <MainProfileContainer />
-                  ) : (
-                    <Redirect to="/authentication"/>
-                  )
-                )}/>
-
-                <Route exact path="/authentication" render={() => (
-                  !loggedIn ? (
-                    <AuthenticationContainer />
-                  ) : (
-                    <Redirect to="/"/>
-                  )
-                )}/>
-
-              </Switch>
-            </div>)
+    return (
+      <HashRouter>
+        <div>
+          <Switch>
+          <Route exact path="/" component= {MainProfileContainer} />
+          <Route exact path="/authentication" component={AuthenticationContainer} />
+          </Switch>
+        </div>
+      </HashRouter>)
     }
 
 function mapStateToProps(state){

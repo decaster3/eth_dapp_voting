@@ -2,18 +2,17 @@ import React, { Component } from 'react';
 import { passwordSignin, passwordSignup} from '../../actions/authentication/authentication_actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { Route, Switch, Redirect } from 'react-router-dom';
+import { withRouter } from 'react-router';
 
 import  AuthenticationAwaitingComponent from '../../components/authentication/authentication_awaiting_component'
 import  AuthenticationAnonymousComponent from '../../components/authentication/authentication_anonymous_component'
-
 let C = require("../../constants/authentication/authentication.js")
 
 class AuthenticationContainer extends Component {
   constructor(props){
     super(props)
-
-    }
-
+  }
   render(){
 		let p = this.props
     let user = p.user
@@ -22,7 +21,7 @@ class AuthenticationContainer extends Component {
 			case C.SIGNED_IN:
         return (
           <div>
-            Redirect
+            <Redirect exact to ='/' />
           </div>
 			   );
 			case C.AWAITING:
@@ -65,4 +64,4 @@ function mapDispatchToProps(dispatch){
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(AuthenticationContainer)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(AuthenticationContainer))
