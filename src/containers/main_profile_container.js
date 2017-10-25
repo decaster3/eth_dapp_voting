@@ -17,6 +17,7 @@ class MainProfileContainer extends Component {
 
 
   render(){
+    console.log(123123);
 		let p = this.props
     let user = p.user
     let s = this.state

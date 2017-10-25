@@ -1,11 +1,14 @@
 import React from 'react';
 import { Route, Switch, Redirect, HashRouter } from 'react-router-dom';
 import App from './components/App';
-import AuthenticationContainer from './containers/authentication/authentication_container'
+import AuthenticationContainer from './containers/authentication/authentication_container';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 let C = require("./constants/authentication/authentication.js");
-import MainProfileContainer from './containers/main_profile_container'
+import MainProfileContainer from './containers/main_profile_container';
+import Navbar from './components/layout/navbar';
+import Footer from './components/layout/footer';
+
 export const Routes = (props) => {
 
     let userState = props.user.currently;
