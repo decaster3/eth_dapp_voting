@@ -5,6 +5,7 @@ import { bindActionCreators } from 'redux';
 
 import  AuthenticationAwaitingComponent from '../../components/authentication/authentication_awaiting_component'
 import  AuthenticationAnonymousComponent from '../../components/authentication/authentication_anonymous_component'
+
 let C = require("../../constants/authentication/authentication.js")
 
 class AuthenticationContainer extends Component {
