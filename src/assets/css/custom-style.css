@@ -1,0 +1,28 @@
+html {
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    height: calc(100vh - 181px);
+    width: 100%;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
+
+footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
