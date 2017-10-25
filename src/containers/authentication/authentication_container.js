@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import { passwordSignin, passwordSignup} from '../../actions/authentication/authentication_actions';
+import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import  AuthenticationAwaitingComponent from '../../components/authentication/authentication_awaiting_component'
