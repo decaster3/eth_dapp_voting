@@ -35,34 +35,110 @@ export default class SignUpComponent extends Component {
     let p = this.props
     if (this.state.signUpFields){
       return (
-        <div>
+        <div className="container">
+            <h4 className="header center" >Choose the role:</h4>
+            <br/>
+            <div className="section">
 
-          <div>
-            <button onClick = {() => this.changeView("provider")}>Customer</button>
-          </div>
+            <div className="row">
+              <div className="col s12 m4">
+                <div className="icon-block">
+                  <h2 className="center light-blue-text"><i className="material-icons">local_grocery_store</i></h2>
+                  <h5 className="center">Provider</h5>
+                  <br/>
+                  <br/>
+                  <div className="row center">
+                    <a onClick = {() => this.changeView("Provider")} id="download-button" className="btn-large waves-effect waves-light orange">Get Started</a>
+                  </div>
+                </div>
+              </div>
 
-          <div>
-            <button onClick = {() => this.changeView("buisnesman")}>Buisnesman</button>
-          </div>
+              <div className="col s12 m4">
+                <div className="icon-block">
+                  <h2 className="center light-blue-text"><i className="material-icons">monetization_on</i></h2>
+                  <h5 className="center">Buisnesman</h5>
+                  <br/>
+                  <br/>
+                  <div className="row center">
+                    <a onClick = {() => this.changeView("Buisnesman")} id="download-button" className="btn-large waves-effect waves-light orange">Get Started</a>
+                  </div>
+                </div>
+              </div>
 
-          <div>
-            <button onClick = {() => this.changeView("client")}>Client</button>
+              <div className="col s12 m4">
+                <div className="icon-block">
+                  <h2 className="center light-blue-text"><i className="material-icons">group</i></h2>
+                  <h5 className="center">Client</h5>
+                  <br/>
+                  <br/>
+                  <div className="row center">
+                    <a onClick = {() => this.changeView("Client")} id="download-button" className="btn-large waves-effect waves-light orange">Get Started</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
           </div>
         </div>
+
       )
     }
     else {
       return (
         <div>
-          {s.role}
-          <input type="text" name="email" onChange={this.handleChange} value={s.email}  placeholder="Email"/>
-          <input type="password" name="pass" onChange={this.handleChange} value={s.pass} placeholder="Password"/>
-          <input type="text" name="address" onChange={this.handleChange} value={s.address} placeholder="Address"/>
-          <button onClick = {() => p.passwordSignup(s.email, s.pass, s.role, s.address)}> Sign up</button>
+        <div className="section no-pad-bot" id="index-banner">
 
-          <div>
-            <button onClick = {() => this.changeView()}>Back</button>
+            <h1 className="header center orange-text">Sign up</h1>
+            <br/><br/>
           </div>
+
+          <div className="row">
+          <div className="col s6 offset-s3">
+              <div className="row">
+                <div className="col s6 offset-s1">
+                    <a onClick = {() => this.changeView()} className="waves-effect waves-green btn white grey-text text-darken-4">Back to chooser</a>
+                  <blockquote><h6>User role: </h6>   <h5>{s.role}</h5></blockquote>
+                </div>
+              </div>
+          </div>
+          <br/><br/>
+          <div className="container">
+            <div className="section">
+
+              <div className="row">
+                <form className="col s12">
+
+
+                    <div className="input-field col s6 offset-s3">
+                      <input id="email" type="email" className="validate" name="email" onChange={this.handleChange} value={s.email}/>
+                      <label data-error="Wrong email format!" for="email">Email</label>
+                    </div>
+
+                     <div className="input-field col s6 offset-s3">
+                       <input id="password" type="password" className="validate" name="pass" onChange={this.handleChange} value={s.pass}/>
+                       <label for="password">Password</label>
+                     </div>
+
+
+                     <div className="input-field col s6 offset-s3">
+                       <input id="address" type="text" data-length="32"  name="address" onChange={this.handleChange} value={s.address}/>
+                       <label data-error="Wrong address format!" for="address">Address</label>
+                     </div>
+
+                    <div className="col s6 offset-s3 center">
+                      <button className="btn waves-effect waves-light" type="submit" name="action" onClick = {() => p.passwordSignup(s.email, s.pass, s.role, s.address)}>Submit
+                         <i className="material-icons right">send</i>
+                      </button>
+                    </div>
+                </form>
+             </div>
+
+            </div>
+          <br/><br/>
+          </div>
+          </div>
+
+
         </div>
       )
     }

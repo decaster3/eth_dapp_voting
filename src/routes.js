@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 let C = require("./constants/authentication/authentication.js");
 import MainProfileContainer from './containers/main_profile_container';
-import Navbar from './components/layout/navbar';
+import NavBarContainer from './containers/layout/navbar_container';
 import Footer from './components/layout/footer';
 
 export const Routes = (props) => {
@@ -17,10 +17,12 @@ export const Routes = (props) => {
     return (
       <HashRouter>
         <div>
+          <NavBarContainer/>
           <Switch>
           <Route exact path="/" component= {MainProfileContainer} />
           <Route exact path="/authentication" component={AuthenticationContainer} />
           </Switch>
+          <Footer/>
         </div>
       </HashRouter>)
     }

@@ -7,5 +7,5 @@
 })(jQuery); // end of jQuery name space
 $(document).ready(function() {
    $('select').material_select();
+   $('ul.tabs').tabs();
  });
-     
