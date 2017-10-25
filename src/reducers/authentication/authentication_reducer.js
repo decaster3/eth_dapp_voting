@@ -11,7 +11,7 @@ module.exports = function(currentstate = initialState.auth,action){
       };
     case C.LOGOUT:
       return {
-        currently: C.ANONYMOUS,
+        currently: C.SIGNED_IN,
         email: "guest",
         uid: null
       };

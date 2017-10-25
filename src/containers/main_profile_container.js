@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-let C = require("../../constants/authentication/authentication.js")
+let C = require("../constants/authentication/authentication.js")
 
 import ClientProfileContainer from './client/client_profile_container'
-import BuisnesmanProfileContainer from './client/buisnesman_profile_container'
-import ProviderProfileContainer from './client/provider_profile_container'
+import BuisnesmanProfileContainer from './buisnesman/buisnesman_profile_container'
+import ProviderProfileContainer from './provider/provider_profile_container'
 
 class MainProfileContainer extends Component {
   constructor(props){

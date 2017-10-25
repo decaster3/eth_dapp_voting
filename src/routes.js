@@ -5,7 +5,7 @@ import AuthenticationContainer from './containers/authentication/authentication_
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 let C = require("./constants/authentication/authentication.js");
-
+import MainProfileContainer from './containers/main_profile_container'
 export const Routes = (props) => {
 
     let userState = props.user.currently;
@@ -16,12 +16,20 @@ export const Routes = (props) => {
 
                 <Route exact path="/" render={() => (
                   loggedIn ? (
-                    <App/>
+                    <MainProfileContainer />
                   ) : (
                     <Redirect to="/authentication"/>
                   )
                 )}/>
-                <Route path="/authentication" component={AuthenticationContainer} />
+
+                <Route exact path="/authentication" render={() => (
+                  !loggedIn ? (
+                    <AuthenticationContainer />
+                  ) : (
+                    <Redirect to="/"/>
+                  )
+                )}/>
+
               </Switch>
             </div>)
     }
