@@ -5,6 +5,7 @@ module.exports = function(currentstate = initialState.auth,action){
   switch(action.type){
     case C.ATTEMPTING:
       return {
+        ...currentstate,
         currently: C.AWAITING,
         email: "guest",
         uid: null
@@ -22,7 +23,9 @@ module.exports = function(currentstate = initialState.auth,action){
         currently: C.SIGNED_IN,
         role: action.role,
         email: action.email,
-        address: action.address
+        address: action.address,
+        user: action.uid,
+        contracts: action.contracts
       };
     default: return currentstate;
   }

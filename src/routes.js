@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 let C = require("./constants/authentication/authentication.js");
 import MainProfileContainer from './containers/main_profile_container'
+import NavBarContainer from './containers/layouts/navbar_container'
 export const Routes = (props) => {
 
     let userState = props.user.currently;
@@ -14,6 +15,7 @@ export const Routes = (props) => {
     return (
       <HashRouter>
         <div>
+          <NavBarContainer />
           <Switch>
           <Route exact path="/" component= {MainProfileContainer} />
           <Route exact path="/authentication" component={AuthenticationContainer} />

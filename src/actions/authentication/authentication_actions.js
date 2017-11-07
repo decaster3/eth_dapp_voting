@@ -13,7 +13,8 @@ export function startListeningToAuth(){
             uid: snapshot.key,
             email: snapshot.val().email,
             role: snapshot.val().role,
-            address: snapshot.val().address
+            address: snapshot.val().address,
+            contracts: snapshot.val().contracts
           })
         })
       } else {
@@ -47,7 +48,8 @@ export function passwordSignup(email, pass, role, address){
         email: email,
         pass: pass,
         role: role,
-        address: address
+        address: address,
+        uid: user.uid
       })
     }).catch(function(error) {
       console.log("ERROR IN SIGNUP");

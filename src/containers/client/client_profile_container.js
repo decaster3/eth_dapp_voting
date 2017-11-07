@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 export default class ClientProfileContainer extends Component {
   render(){
     return (
-      <div >
+      <div>
          ClientProfileContainer
       </div>
     )
