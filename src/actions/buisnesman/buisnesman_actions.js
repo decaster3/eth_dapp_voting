@@ -38,6 +38,7 @@ export function setMyContracts(){
           var contract = {
             name: snapshot.val().name,
             ingridients: snapshot.val().ingridients,
+            price: snapshot.val().finalCost,
             isReady: snapshot.val().isReady,
             id: snapshot.key
           }

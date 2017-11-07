@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 export default class MyContractsComponent extends Component {
   render(){
-    var myContractsView = this.props.myContracts.map((contract,key) => {
+    var possibleContractsView = this.props.possibleContracts.map((contract,key) => {
       var ingridientsView = null
 
       if(contract.ingridients){
@@ -14,7 +14,16 @@ export default class MyContractsComponent extends Component {
               <p>Ingridient: {keyy}</p>
               <p>name: {ingridient.name}</p>
               <p>price: {ingridient.price}</p>
-              <p>is ready: {String(ingridient.isReady)}</p>
+              {
+                ingridient.isReady == false?
+                  <div>
+                    <button onClick = { () => {this.props.goToContract(contract.key, ingridient.name);this.props.setMyProviderContracts()}}>PROVIDE THIS INGRIDIENT</button>
+                  </div>
+                :
+                  <div>
+                    This ingridient already provided.
+                  </div>
+              }
             </div>
           )
         })
@@ -35,10 +44,10 @@ export default class MyContractsComponent extends Component {
         </div>
       )
     })
-    console.log(myContractsView);
+    console.log(possibleContractsView);
     return (
       <div>
-        {myContractsView}
+        {possibleContractsView}
       </div>
     )
 	}

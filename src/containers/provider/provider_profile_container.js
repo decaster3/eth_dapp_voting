@@ -1,11 +1,65 @@
 import React, { Component } from 'react';
-
-export default class ProviderProfileContainer extends Component {
+import {
+  setPossibleContracts,
+  goToContract,
+  setMyProviderContracts } from '../../actions/provider/provider_actions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import PossibleContractsComponent from '../../components/provider/possible_contracts_component';
+import MyContractsProviderContainer from './my_contracts_provider_container'
+class ProviderProfileContainer extends Component {
+  componentDidMount(){
+    this.props.setPossibleContracts()
+  }
   render(){
-    return (
-      <div >
-        ProviderProfileContainer
-      </div>
-    )
+    let p = this.props
+    switch (p.provider.possibleContractsCurrently) {
+      case "POSSIBLE_CONTRACTS_LOADED":
+        return (
+          <div>
+            <MyContractsProviderContainer />
+            {
+              p.provider.possibleContracts.length>0?
+                <PossibleContractsComponent
+                  goToContract = {p.goToContract}
+                  possibleContracts = {p.provider.possibleContracts}
+                  setMyProviderContracts = {p.provider.setMyProviderContracts}/>
+              :
+                <div>You havent got contracts yet</div>
+            }
+          </div>
+        )
+      case "POSSIBLE_CONTRACTS_LOADING":
+        return (
+          <div>
+            <MyContractsProviderContainer />
+            <div>Loading</div>
+          </div>
+        )
+      default:
+        return (
+          <div>Bad connection</div>
+        )
+    }
 	}
 }
+
+function mapStateToProps(state){
+    return {
+      user: state.user,
+      provider: state.provider
+    }
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators(
+    {
+      setPossibleContracts: setPossibleContracts,
+      goToContract: goToContract,
+      setMyProviderContracts: setMyProviderContracts
+    },
+    dispatch
+  )
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProviderProfileContainer)
