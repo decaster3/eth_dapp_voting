@@ -1,36 +1,41 @@
 import React, { Component } from 'react';
 import SignUpComponent from './sign_up_component'
 import SignInComponent from './sign_in_component'
-
+import { Tabs, Tab } from 'react-materialize';
+let SIGN_IN = 1;
+let SIGN_UP = 2;
 export default class AuthenticationAnonymousComponent extends Component {
 
   constructor(props){
     super(props)
     this.state = {
-      signUp: 1
+      componentToShow: 1
+
     }
     this.changeView = this.changeView.bind(this)
   }
 
   changeView(num){
-    var a = this.state.signUp
+    var a = this.state.componentToShow
     this.setState({
-      signUp: num
+      componentToShow: num
     })
   }
 
   render(){
-    let p = this.props
+      let p = this.props
+      var component = this.state.componentToShow == SIGN_IN ?
+                        <SignInComponent passwordSignin = {p.passwordSignin} />
+                      :
+                        <SignUpComponent passwordSignup = {p.passwordSignup}/>
       return (
-        <div>
-          <button onClick = {() => this.changeView(1)}>Sign in</button>
-          <button onClick = {() => this.changeView(2)}>Sign up</button>
-          {
-            this.state.signUp == 2?
-              <SignUpComponent passwordSignup = {p.passwordSignup}/>
-            :
-              <SignInComponent passwordSignin = {p.passwordSignin} />
-          }
+        <div >
+        <br/>
+        <Tabs className='tab-demo z-depth-1 col s4 offset-s4'>
+          <Tab className="tab col s5 offset-s1" title="Sign in" active><SignInComponent passwordSignin = {p.passwordSignin} /></Tab>
+          <Tab className="tab col s5" title="Sign up" ><SignUpComponent passwordSignup = {p.passwordSignup}/></Tab>
+        </Tabs>
+
         </div>
       )
     }
