@@ -86,7 +86,7 @@ export default class NewContractComponent extends Component {
         <button onClick = {() => this.addIngridient()}>Add</button>
         {ingridients}
 
-        <button onClick = {() => p.createContract(s.name, s.finalCost, s.ingridients)}>Create</button>
+        <button onClick = {() => {p.createContract(s.name, s.finalCost, s.ingridients); p.changeView(); p.setMyContracts()}}>Create</button>
       </div>
     )
 	}

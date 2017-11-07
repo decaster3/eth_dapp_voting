@@ -36,7 +36,7 @@ class BuisnesmanProfileContainer extends Component {
             <div>
               {
                 p.buisnesman.myContracts.length>0?
-                  <MyContractsComponent myContracts = {p.buisnesman.myContracts}/>
+                  <MyContractsComponent changeView = {this.changeView} myContracts = {p.buisnesman.myContracts}/>
                 :
                   <div>You havent got contracts yet</div>
               }
@@ -55,7 +55,7 @@ class BuisnesmanProfileContainer extends Component {
     }else{
       return(
         <div>
-          <NewContractComponent createContract = {p.createContract}/>
+          <NewContractComponent setMyContracts = {p.setMyContracts} changeView = {this.changeView} createContract = {p.createContract}/>
           <button onClick = {() => this.changeView(false)}>Back</button>
         </div>
       )
