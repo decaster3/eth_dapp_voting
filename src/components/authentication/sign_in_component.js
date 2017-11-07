@@ -40,7 +40,7 @@ handleChange(event){
                 <form className="col s12">
                   <div className="row">
                     <div className="input-field col s6 offset-s3">
-                      <input id="email" type="email" className="validate" name="email" onChange={this.handleChange} value={s.email} />
+                      <input id="email" required="" aria-required="true" type="email" data-length="32" className="validate" name="email" onChange={this.handleChange} value={s.email} />
                       <label data-error="Wrong email format!" for="email">Email</label>
                     </div>
 

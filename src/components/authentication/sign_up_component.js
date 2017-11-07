@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-
+import { initCounter } from '../../assets/js/init';
 export default class SignUpComponent extends Component {
   constructor(props){
     super(props)
@@ -24,10 +24,12 @@ export default class SignUpComponent extends Component {
 
   changeView(role = null){
     var a = this.state.signUpFields
+
     this.setState({
       signUpFields: !a,
       role: role
     })
+
   }
 
   render(){
@@ -56,11 +58,11 @@ export default class SignUpComponent extends Component {
               <div className="col s12 m4">
                 <div className="icon-block">
                   <h2 className="center light-blue-text"><i className="material-icons">monetization_on</i></h2>
-                  <h5 className="center">Buisnesman</h5>
+                  <h5 className="center">Businessman</h5>
                   <br/>
                   <br/>
                   <div className="row center">
-                    <a onClick = {() => this.changeView("Buisnesman")} id="download-button" className="btn-large waves-effect waves-light orange">Get Started</a>
+                    <a onClick = {() => this.changeView("Businessman")} id="download-button" className="btn-large waves-effect waves-light orange">Get Started</a>
                   </div>
                 </div>
               </div>
@@ -84,6 +86,7 @@ export default class SignUpComponent extends Component {
       )
     }
     else {
+      initCounter();
       return (
         <div>
         <div className="section no-pad-bot" id="index-banner">
@@ -110,18 +113,18 @@ export default class SignUpComponent extends Component {
 
 
                     <div className="input-field col s6 offset-s3">
-                      <input id="email" type="email" className="validate" name="email" onChange={this.handleChange} value={s.email}/>
+                      <input id="email" type="email" required="" aria-required="true" className="validate" name="email" onChange={this.handleChange} value={s.email}/>
                       <label data-error="Wrong email format!" for="email">Email</label>
                     </div>
 
                      <div className="input-field col s6 offset-s3">
-                       <input id="password" type="password" className="validate" name="pass" onChange={this.handleChange} value={s.pass}/>
+                       <input id="password" type="password" minLength="4" className="validate" name="pass" onChange={this.handleChange} value={s.pass}/>
                        <label for="password">Password</label>
                      </div>
 
 
                      <div className="input-field col s6 offset-s3">
-                       <input id="address" type="text" data-length="32"  name="address" onChange={this.handleChange} value={s.address}/>
+                       <input id="address" type="text" data-length="32" name="address" onChange={this.handleChange} value={s.address}/>
                        <label data-error="Wrong address format!" for="address">Address</label>
                      </div>
 
