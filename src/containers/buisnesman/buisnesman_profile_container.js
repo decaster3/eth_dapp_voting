@@ -27,6 +27,8 @@ class BuisnesmanProfileContainer extends Component {
         return (
           <Tabs className='tab-demo z-depth-1 col s6 offset-s3' >
             <Tab className="tab col s5 offset-s1" title={title} active>
+            <br/>
+            <br/>
               {
                 p.buisnesman.myContracts.length > 0 ?
                   <MyContractsComponent changeView = {this.changeView} myContracts = {p.buisnesman.myContracts}/>
@@ -37,6 +39,9 @@ class BuisnesmanProfileContainer extends Component {
               }
             </Tab>
             <Tab className="tab col s5 " title="Create contract">
+            <br/>
+            <br/>
+
               <NewContractComponent setMyContracts = {p.setMyContracts} changeView = {this.changeView} createContract = {p.createContract}/>
             </Tab>
           </Tabs>
