@@ -5,6 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
 let C = require("../constants/authentication/authentication.js")
 
+import Loader from '../components/layout/loader'
 import ClientProfileContainer from './client/client_profile_container'
 import BuisnesmanProfileContainer from './buisnesman/buisnesman_profile_container'
 import ProviderProfileContainer from './provider/provider_profile_container'
@@ -15,44 +16,36 @@ class MainProfileContainer extends Component {
 
   }
 
-
   render(){
-    
+
 		let p = this.props
     let user = p.user
     let s = this.state
+    var profile = null;
+
 		switch(user.role){
-			case "buisnesman":
-        return (
-          <div>
-            <BuisnesmanProfileContainer />
-          </div>
-        )
-      case "provider":
-        return (
-          <div>
-            <ProviderProfileContainer />
-          </div>
-        )
-      case "client":
-        return (
-          <div>
-            <ClientProfileContainer />
-          </div>
-        )
+			case "Businessman":
+        profile = <BuisnesmanProfileContainer />
+        break;
+      case "Provider":
+        profile =  <ProviderProfileContainer />
+        break;
+      case "Client":
+        profile =  <ClientProfileContainer />
+        break;
       case "no":
-        return (
-          <div>
-            <Redirect to = "/authentication"/>
-          </div>
-        )
+        profile =  <Redirect to = "/authentication"/>
+        break;
       default:
-        return(
-          <div>
-            Loading...
-          </div>
-        )
+        <Loader/>
+        break;
 		}
+
+    return (
+      <div className="profile container">
+        {profile}
+      </div>
+    )
 	}
 }
 

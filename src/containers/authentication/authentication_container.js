@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import { withRouter } from 'react-router';
-
+import Loader from '../../components/layout/loader'
 import  AuthenticationAwaitingComponent from '../../components/authentication/authentication_awaiting_component'
 import  AuthenticationAnonymousComponent from '../../components/authentication/authentication_anonymous_component'
 let C = require("../../constants/authentication/authentication.js")
@@ -40,9 +40,7 @@ class AuthenticationContainer extends Component {
   			);
       default:
         return(
-          <div>
-            Loading...
-          </div>
+          <Loader/>
         )
 		}
 	}
