@@ -3,6 +3,7 @@ let C = require("../../constants/provider/provider.js")
 
 
 export function setPossibleContracts(){
+  console.log(1);
   return function(dispatch, getState){
       dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADING})
       var possibleContracts = []
@@ -141,6 +142,7 @@ export function updateMyProviderContracts(dispatch, getState){
 
 
 export function setMyProviderContracts(){
+  console.log(2);
   return function(dispatch, getState){
     if(getState().user.contracts){
       dispatch({type: C.MY_PROVIDER_CONTRACTS_CHANGING_STATE, myProviderContractsCurrently: C.MY_PROVIDER_CONTRACTS_LOADING})

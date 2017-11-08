@@ -6,8 +6,9 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PossibleContractsClientContainer from '../../components/client/possible_contracts_client_component';
 import Loader from '../../components/layout/loader'
+import { Tabs, Tab } from 'react-materialize';
 
-class ProviderProfileContainer extends Component {
+class ClientProfileContainer extends Component {
   componentDidMount(){
     this.props.setPossibleContracts()
   }
@@ -17,15 +18,15 @@ class ProviderProfileContainer extends Component {
       case "POSSIBLE_CLIENT_CONTRACTS_LOADED":
         return (
           <div>
-            {
-              p.client.possibleClientContracts.length > 0 ?
-                <PossibleContractsClientContainer
-                  possibleClientContracts = {p.client.possibleClientContracts}
-                  />
-              :
-                <div>You cant buy enything for now!</div>
-            }
-          </div>
+             {
+               p.client.possibleClientContracts.length > 0 ?
+                 <PossibleContractsClientContainer
+                   possibleClientContracts = {p.client.possibleClientContracts}
+                   />
+               :
+                 <div>You cant buy enything for now!</div>
+             }
+           </div>
         )
       case "POSSIBLE_CLIENT_CONTRACTS_LOADING":
         return (
@@ -55,4 +56,4 @@ function mapDispatchToProps(dispatch){
   )
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(ProviderProfileContainer)
+export default connect(mapStateToProps, mapDispatchToProps)(ClientProfileContainer)

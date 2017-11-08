@@ -12,6 +12,10 @@ export default class SignInComponent extends Component {
   this.handleChange = this.handleChange.bind(this);
 }
 
+componentDidMount() {
+  Materialize.updateTextFields();
+}
+
 handleChange(event){
   const target = event.target;
   const name = target.name;

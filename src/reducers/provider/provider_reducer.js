@@ -7,13 +7,13 @@ module.exports = function(currentstate = initialState.provider,action){
       return {
         ...currentstate,
         possibleContractsCurrently: action.possibleContractsCurrently,
-        possibleContracts: action.possibleContracts
+        possibleContracts: action.possibleContracts || []
       };
     case C.MY_PROVIDER_CONTRACTS_CHANGING_STATE:
       return {
         ...currentstate,
         myProviderContractsCurrently: action.myProviderContractsCurrently,
-        myProviderContracts: action.myProviderContracts
+        myProviderContracts: action.myProviderContracts || []
       }
     default: return currentstate;
   }

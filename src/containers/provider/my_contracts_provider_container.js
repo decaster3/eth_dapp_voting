@@ -6,10 +6,12 @@ import MyContractsProviderComponent from '../../components/provider/my_contracts
 import Loader from '../../components/layout/loader'
 
 class MyContractsProviderContainer extends Component {
-  componentDidMount(){
+
+  componentDidMount() {
     this.props.setMyProviderContracts()
   }
-  render(){
+
+  render() {
     let p = this.props
     switch (p.provider.myProviderContractsCurrently) {
       case "MY_PROVIDER_CONTRACTS_LOADED":
@@ -20,7 +22,9 @@ class MyContractsProviderContainer extends Component {
                 <MyContractsProviderComponent
                   myProviderContracts = {p.provider.myProviderContracts}/>
               :
-                <div>You havent got contracts yet</div>
+                <blockquote>
+                  <div>You havent got contracts yet</div>
+                </blockquote>
             }
           </div>
         )
