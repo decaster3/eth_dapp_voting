@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 let C = require("./constants/authentication/authentication.js");
 import MainProfileContainer from './containers/main_profile_container';
-import NavBarContainer from './containers/layout/navbar_container';
+import NavBarContainer from './containers/layouts/navbar_container';
 import Footer from './components/layout/footer';
 
 export const Routes = (props) => {

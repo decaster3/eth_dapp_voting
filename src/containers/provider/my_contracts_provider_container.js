@@ -3,6 +3,7 @@ import { setMyProviderContracts } from '../../actions/provider/provider_actions'
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import MyContractsProviderComponent from '../../components/provider/my_contracts_provider_component';
+import Loader from '../../components/layout/loader'
 
 class MyContractsProviderContainer extends Component {
   componentDidMount(){
@@ -25,7 +26,7 @@ class MyContractsProviderContainer extends Component {
         )
       case "MY_PROVIDER_CONTRACTS_LOADING":
         return (
-          <div>Loading</div>
+          <Loader/>
         )
       default:
         return (

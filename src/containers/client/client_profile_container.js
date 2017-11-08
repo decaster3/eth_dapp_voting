@@ -5,6 +5,7 @@ import {
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import PossibleContractsClientContainer from '../../components/client/possible_contracts_client_component';
+import Loader from '../../components/layout/loader'
 
 class ProviderProfileContainer extends Component {
   componentDidMount(){
@@ -17,7 +18,7 @@ class ProviderProfileContainer extends Component {
         return (
           <div>
             {
-              p.client.possibleClientContracts.length>0?
+              p.client.possibleClientContracts.length > 0 ?
                 <PossibleContractsClientContainer
                   possibleClientContracts = {p.client.possibleClientContracts}
                   />
@@ -28,9 +29,7 @@ class ProviderProfileContainer extends Component {
         )
       case "POSSIBLE_CLIENT_CONTRACTS_LOADING":
         return (
-          <div>
-            <div>Loading</div>
-          </div>
+          <Loader/>
         )
       default:
         return (

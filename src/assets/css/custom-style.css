@@ -26,3 +26,26 @@ footer {
   bottom: 0;
   width: 100%;
 }
+
+.profile {
+  margin-top: 48px;
+
+}
+
+.my-tab {
+    margin-bottom: 24px;
+}
+
+.myContracts {
+  margin-top: 12px;
+}
+
+.auth {
+  width: 100%
+}
+
+.loader {
+  margin: 0 auto;
+  margin-top: 48px;
+  width: 100px;
+}

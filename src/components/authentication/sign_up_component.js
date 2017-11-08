@@ -129,7 +129,7 @@ export default class SignUpComponent extends Component {
                      </div>
 
                     <div className="col s6 offset-s3 center">
-                      <button className="btn waves-effect waves-light" type="submit" name="action" onClick = {() => p.passwordSignup(s.email, s.pass, s.role, s.address)}>Submit
+                      <button className="btn waves-effect waves-light" type="button" name="action" onClick = {() => p.passwordSignup(s.email, s.pass, s.role, s.address)}>Submit
                          <i className="material-icons right">send</i>
                       </button>
                     </div>
