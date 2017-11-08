@@ -6,7 +6,7 @@ module.exports = function(currentstate = initialState.buisnesman,action){
     case C.MY_CONTRACTS_CHANGING_STATE:
       return {
         myContractsCurrently: action.myContractsCurrently,
-        myContracts: action.myContracts 
+        myContracts: action.myContracts || []
       };
     default: return currentstate;
   }

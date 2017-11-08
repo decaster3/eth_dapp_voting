@@ -20,7 +20,7 @@ class BuisnesmanProfileContainer extends Component {
   render(){
     let s = this.state
     let p = this.props
-
+    console.log(p.buisnesman.myContracts);
     var title =  (<span>My contracts <span className="badge new blue myContracts" data-badge-caption=""> {p.buisnesman.myContracts.length} </span></span>);
     switch (p.buisnesman.myContractsCurrently) {
       case "MY_CONTRACTS_LOADED":
