@@ -44,7 +44,7 @@ class BuisnesmanProfileContainer extends Component {
               <br/>
               <br/>
 
-                <NewContractComponent setMyContracts = {p.setMyContracts} changeView = {this.changeView} createContract = {p.createContract}/>
+                <NewContractComponent changeView = {this.changeView} createContract = {p.createContract}/>
               </Tab>
             </Tabs>
           )

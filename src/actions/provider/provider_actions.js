@@ -3,7 +3,6 @@ let C = require("../../constants/provider/provider.js")
 var A = require("../../constants/eth_constants.js")
 
 export function setPossibleContracts(){
-  console.log(1);
   return function(dispatch, getState){
       dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADING})
       var possibleContracts = []

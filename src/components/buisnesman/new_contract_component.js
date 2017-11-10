@@ -131,7 +131,7 @@ export default class NewContractComponent extends Component {
               </a>
               </div>
               <div className="center">
-              <button type="button" className="waves-effect waves-light btn-large" onClick = {() => {console.log(123); p.createContract(s.name, s.finalCost, s.ingredients); p.setMyContracts()}}>Create</button>
+              <button type="button" className="waves-effect waves-light btn-large" onClick = {() => { p.createContract(s.name, s.finalCost, s.ingredients)}}>Create</button>
               </div>
               </div>
             :
