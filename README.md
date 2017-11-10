@@ -2,7 +2,7 @@
 https://dapp-16e5e.firebaseapp.com/ - working project
 Open with metamask in google chrome!!!
  <br />
-To start local:
+<h3>To start local:</h3>
 1) clone project
 2) $ npm install
 3) $ npm run start
@@ -13,7 +13,7 @@ Open with metamask in google chrome!!!
 The main purpose of application “SupplyChain” that any Business able to start from scratch and without investment in raw materials. The platform involves entrepreneurs, vendors and customers in one place. For example, entrepreneur creates the product, called “Car” and pointes necessary details for construction the car. Let suppose for “Car” we need “carcase”, “engine” and “wheels”. The next step after “Car” had been created “Vendors” able to see products with open positions that have not supplied by another vendors yet. “Vendor” able to supply open positions to “Entrepreneur”. When all positions are supplied product ready for sale, appends to global list of products and visible for all customers of the platform. From “Customer”’s point for view list of products shown as in normal internet shop. Customers can buy product via metamask account. When product was bought, amount of product’s price substructs to “Vendor” supplyiment and to “Entrepreneur” extra charge. Both charges in the same time transfers to Vendor and Entrepreneur wallets.
  <br />
   <br />
-Technology stack:
+<h3>Technology stack:</h3>
  <br />
 Solidity - contract
  <br />
@@ -32,7 +32,7 @@ _____________________________________
  <br />
  <br />
 
-Technology stack:
+<h3>Technology stack:</h3>
 Solidity - contract
  <br />
 React.js - frontend
