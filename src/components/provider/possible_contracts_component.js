@@ -1,53 +1,58 @@
 import React, { Component } from 'react';
 
 export default class MyContractsComponent extends Component {
-  render(){
-    var possibleContractsView = this.props.possibleContracts.map((contract,key) => {
-      var ingridientsView = null
 
-      if(contract.ingridients){
-        console.log(contract.ingridients);
-        ingridientsView = contract.ingridients.map((ingridient,keyy) => {
+  componentDidMount(){
+    $('.collapsible').collapsible();
+  }
+
+  render(){
+    var possibleContractsView = this.props.possibleContracts.map((contract, key) => {
+      var ingridientsView = contract.ingridients.map((ingridient, ingredientKey) => {
         // TODO: добавить состояние ингридиента
-          return(
-            <div key = {keyy}>
-              <p>Ingridient: {keyy}</p>
-              <p>name: {ingridient.name}</p>
-              <p>price: {ingridient.price}</p>
-              {
-                ingridient.isReady == false?
-                  <div>
-                    <button onClick = { () => {this.props.goToContract(contract.key, ingridient.name);this.props.setMyProviderContracts()}}>PROVIDE THIS INGRIDIENT</button>
-                  </div>
-                :
-                  <div>
-                    This ingridient already provided.
-                  </div>
-              }
+        return (
+          <div className="row" key = {ingredientKey}>
+            <div className="col s12 ">
+              <div className="card blue-grey darken-1">
+                <div className="card-content white-text ">
+                  <span className="card-title">{ingridient.name}</span>
+                    <p>price: {ingridient.price}</p>
+                </div>
+
+                  <div className="card-action">
+                    {!ingridient.isReady ?
+                      <a className=" teal-text text-accent-2" type="button" href="javascript:void(0);" onClick = { () => {Materialize.toast("You will suply " + ingridient.name, 10000); this.props.goToContract(contract.key, ingridient.name);this.props.setMyProviderContracts()}}>PROVIDE THIS INGRIDIENT</a>
+                      :
+                      <h5 className="red-text  text-lighten-3">This ingridient already provided.</h5>
+                    }
+                </div>
+              </div>
             </div>
-          )
-        })
-      }
+          </div>
+
+        )
+      })
+
       return (
-        <div key = {key}>
-          <p>Contract: {key}</p>
-          <p>name: {contract.name}</p>
-          <p>total price: {contract.price}</p>
-          <p>is ready: {String(contract.isReady)}</p>
-          {ingridientsView != null?
-            <div>
-              Ingridients
-              {ingridientsView}
-            </div>
-          :
-            <div>There is no ingridients</div>}
-        </div>
+        <li key = {key}>
+          <div className="collapsible-header valign-wrapper">
+            <h5>{contract.name}</h5>
+          </div>
+
+          <div className="collapsible-body">
+            <h4 className="header orange-text">Ingredients</h4>
+            <br/>
+            {ingridientsView}
+          </div>
+        </li>
       )
     })
-    console.log(possibleContractsView);
+
     return (
       <div>
-        {possibleContractsView}
+        <ul className="collapsible" data-collapsible="accordion">
+          {possibleContractsView}
+        </ul>
       </div>
     )
 	}

@@ -19,7 +19,9 @@ body {
 .icon-block .material-icons {
 	font-size: inherit;
 }
-
+.my-body {
+  margin-bottom: 51px;
+}
 footer {
   position: fixed;
   left: 0;

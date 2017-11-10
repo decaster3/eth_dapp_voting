@@ -18,9 +18,12 @@ class MyContractsProviderContainer extends Component {
         return (
           <div>
             {
-              p.provider.myProviderContracts.length>0?
-                <MyContractsProviderComponent
-                  myProviderContracts = {p.provider.myProviderContracts}/>
+              p.provider.myProviderContracts.length > 0 ?
+                <div>
+                  <h3 className="header center orange-text" >My contracts</h3>
+                  <MyContractsProviderComponent
+                    myProviderContracts = {p.provider.myProviderContracts}/>
+                </div>
               :
                 <blockquote>
                   <div>You havent got contracts yet</div>

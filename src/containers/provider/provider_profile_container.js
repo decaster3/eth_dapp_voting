@@ -25,6 +25,9 @@ class ProviderProfileContainer extends Component {
               <MyContractsProviderContainer />
             </div>
             <div className="col s6">
+              <h3 className="header center orange-text" >Buisnesman's offers</h3>
+              <br/>
+              <br/>
               {
                 p.provider.possibleContracts.length>0?
                   <PossibleContractsComponent
@@ -32,8 +35,8 @@ class ProviderProfileContainer extends Component {
                     possibleContracts = {p.provider.possibleContracts}
                     setMyProviderContracts = {p.provider.setMyProviderContracts}/>
                 :
-                  <blockquote>
-                    <div>There is no any offers yet</div>
+                  <blockquote className="center">
+                    <h3>There is no any offers yet</h3>
                   </blockquote>
               }
             </div>

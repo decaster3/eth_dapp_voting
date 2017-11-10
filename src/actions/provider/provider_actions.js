@@ -3,37 +3,23 @@ let C = require("../../constants/provider/provider.js")
 
 
 export function setPossibleContracts(){
-  console.log(1);
   return function(dispatch, getState){
       dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADING})
-      var possibleContracts = []
-      var promises = [];
-      //hz
+
       firebase.database().ref('contracts').once('value', function(snapshot) {
-        snapshot.forEach(function(contract){
+        var possibleContracts = []
+        snapshot.forEach(function(contract) {
           var cont = contract.val()
-          cont["key"] = contract.key
-          promises.push(cont);
-        })
-      }).then(() => {
-        var a = false
-        promises.map(contract => {
-          if(contract.ingridients){
-            contract.ingridients.map((b) => {
-              if(b.isReady == false)
-                a = true
-            })
+          if (!cont.isReady){
+            cont["key"] = contract.key
+            possibleContracts.push(cont);
           }
-          if (a)
-            possibleContracts.push(contract)
         })
-      }).then(() => {
         dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADED, possibleContracts: possibleContracts})
       })
   }
 }
 export function goToContract(contractId, nameIngridient){
-  console.log(nameIngridient);
   return function(dispatch, getState){
     var a = false
     var c = true
@@ -81,30 +67,18 @@ export function goToContract(contractId, nameIngridient){
 
 export function updatePossibleContracts(dispatch,getState){
       dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADING})
-      var possibleContracts = []
-      var promises = [];
-      //hz
+
       firebase.database().ref('contracts').once('value', function(snapshot) {
+        var possibleContracts = []
         snapshot.forEach(function(contract){
           var cont = contract.val()
-          cont["key"] = contract.key
-          promises.push(cont);
-        })
-      }).then(() => {
-        var a = false
-        promises.map(contract => {
-          if(contract.ingridients){
-            contract.ingridients.map((b) => {
-              if(b.isReady == false)
-                a = true
-            })
+          if (!cont.isReady){
+            cont["key"] = contract.key
+            possibleContracts.push(cont);
           }
-          if (a)
-            possibleContracts.push(contract)
         })
-      }).then(() => {
+
         dispatch({type: C.POSSIBLE_CONTRACTS_CHANGING_STATE, possibleContractsCurrently: C.POSSIBLE_CONTRACTS_LOADED, possibleContracts: possibleContracts})
-      }).then( () => {
         updateMyProviderContracts(dispatch,getState)
       })
 }
@@ -142,7 +116,6 @@ export function updateMyProviderContracts(dispatch, getState){
 
 
 export function setMyProviderContracts(){
-  console.log(2);
   return function(dispatch, getState){
     if(getState().user.contracts){
       dispatch({type: C.MY_PROVIDER_CONTRACTS_CHANGING_STATE, myProviderContractsCurrently: C.MY_PROVIDER_CONTRACTS_LOADING})

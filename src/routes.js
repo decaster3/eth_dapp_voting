@@ -18,10 +18,12 @@ export const Routes = (props) => {
       <HashRouter>
         <div>
           <NavBarContainer />
-          <Switch>
-          <Route exact path="/" component= {MainProfileContainer} />
-          <Route exact path="/authentication" component={AuthenticationContainer} />
+          <div className="my-body">
+          <Switch >
+            <Route exact path="/" component= {MainProfileContainer} />
+            <Route exact path="/authentication" component={AuthenticationContainer} />
           </Switch>
+          </div>
           <Footer/>
         </div>
       </HashRouter>)
