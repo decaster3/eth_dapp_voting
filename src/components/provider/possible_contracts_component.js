@@ -23,7 +23,7 @@ export default class MyContractsComponent extends Component {
                     {!ingridient.isReady ?
                       <a className=" teal-text text-accent-2" type="button" href="javascript:void(0);" onClick = { () => {Materialize.toast("You will suply " + ingridient.name, 10000); this.props.goToContract(contract.key, ingridient.name);this.props.setMyProviderContracts()}}>PROVIDE THIS INGRIDIENT</a>
                       :
-                      <h5 className="red-text  text-lighten-3">This ingridient already provided.</h5>
+                      <h5 className="red-text  text-lighten-3">This components already provided.</h5>
                     }
                 </div>
               </div>
@@ -40,7 +40,7 @@ export default class MyContractsComponent extends Component {
           </div>
 
           <div className="collapsible-body">
-            <h4 className="header orange-text">Ingredients</h4>
+            <h4 className="header orange-text">Components</h4>
             <br/>
             {ingridientsView}
           </div>
