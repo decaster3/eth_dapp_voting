@@ -19,7 +19,7 @@ The main purpose of application “SupplyChain” that any Business able to star
   <br />
 <h3>Technology stack:</h3>
  <br />
-Solidity - contract
+Solidity - contract. More info - http://telegra.ph/Sell-contract-11-10
  <br />
 React.js - frontend
  <br />
@@ -37,7 +37,7 @@ _____________________________________
  <br />
 
 <h3>Technology stack:</h3>
-Solidity - contract
+Solidity - contract. More info - http://telegra.ph/Sell-contract-11-10
  <br />
 React.js - frontend
  <br />
