@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {
-  setPossibleContracts
+  setPossibleContracts,
+  buyProduct
 } from '../../actions/client/client_actions';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -20,6 +21,7 @@ class ProviderProfileContainer extends Component {
             {
               p.client.possibleClientContracts.length > 0 ?
                 <PossibleContractsClientContainer
+                  buyProduct = {p.buyProduct}
                   possibleClientContracts = {p.client.possibleClientContracts}
                   />
               :
@@ -49,7 +51,8 @@ function mapStateToProps(state){
 function mapDispatchToProps(dispatch){
   return bindActionCreators(
     {
-      setPossibleContracts
+      setPossibleContracts,
+      buyProduct
     },
     dispatch
   )

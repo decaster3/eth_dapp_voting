@@ -29,6 +29,7 @@
   "author": "Rinat Khatipov",
   "license": "Innopolis in corparated",
   "dependencies": {
+    "web3": "0.20.1",
     "@google/maps": "0.4.3",
     "axios": "0.16.2",
     "firebase": "4.3.1",

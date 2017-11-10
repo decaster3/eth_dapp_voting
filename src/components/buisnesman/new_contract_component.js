@@ -62,7 +62,7 @@ export default class NewContractComponent extends Component {
     });
   }
 
-
+//
   render(){
     let p = this.props
     let s = this.state
@@ -86,7 +86,7 @@ export default class NewContractComponent extends Component {
         <button onClick = {() => this.addIngridient()}>Add</button>
         {ingridients}
 
-        <button onClick = {() => {p.createContract(s.name, s.finalCost, s.ingridients); p.changeView(); p.setMyContracts()}}>Create</button>
+        <button onClick = {() => {p.createContract(s.name, s.finalCost, s.ingridients); p.setMyContracts()}}>Create</button>
       </div>
     )
 	}

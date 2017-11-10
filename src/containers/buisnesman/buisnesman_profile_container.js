@@ -15,7 +15,7 @@ class BuisnesmanProfileContainer extends Component {
 
   componentDidMount(){
     this.props.setMyContracts();
-  }
+  }//
 
   render(){
     let s = this.state
