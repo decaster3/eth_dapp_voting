@@ -73,12 +73,7 @@ export default class NewContractComponent extends Component {
     });
   }
 
-<<<<<<< HEAD
 //
-=======
-
-
->>>>>>> c99a5d86a07d30d6351030286b56fb81e6572e36
   render(){
     let p = this.props
     let s = this.state
@@ -110,18 +105,6 @@ export default class NewContractComponent extends Component {
         </ul>
 
     return (
-<<<<<<< HEAD
-      <div>
-        Name
-        <input type = "text" name= "name" value = {s.name} onChange = {this.handleChange}/>
-        Final Cost
-        <input type = "text" name= "finalCost" value = {s.finalCost} onChange = {this.handleChange}/>
-        ingridients
-        <button onClick = {() => this.addIngridient()}>Add</button>
-        {ingridients}
-
-        <button onClick = {() => {p.createContract(s.name, s.finalCost, s.ingridients); p.setMyContracts()}}>Create</button>
-=======
       <div className="row">
         <form className="col s12">
           <div className="row">
@@ -148,7 +131,7 @@ export default class NewContractComponent extends Component {
               </a>
               </div>
               <div className="center">
-              <button type="button" className="waves-effect waves-light btn-large" onClick = {() => {console.log(123); p.createContract(s.name, s.finalCost, s.ingredients); p.setMyContracts()}}>Create</button>
+              <button type="button" className="waves-effect waves-light btn-large" onClick = {() => { p.createContract(s.name, s.finalCost, s.ingredients)}}>Create</button>
               </div>
               </div>
             :
@@ -160,7 +143,6 @@ export default class NewContractComponent extends Component {
               </div>
           }
         </form>
->>>>>>> c99a5d86a07d30d6351030286b56fb81e6572e36
       </div>
 
     )

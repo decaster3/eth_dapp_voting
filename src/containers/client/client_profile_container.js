@@ -19,7 +19,6 @@ class ClientProfileContainer extends Component {
       case "POSSIBLE_CLIENT_CONTRACTS_LOADED":
         return (
           <div>
-<<<<<<< HEAD
             {
               p.client.possibleClientContracts.length > 0 ?
                 <PossibleContractsClientContainer
@@ -30,17 +29,6 @@ class ClientProfileContainer extends Component {
                 <div>You cant buy enything for now!</div>
             }
           </div>
-=======
-             {
-               p.client.possibleClientContracts.length > 0 ?
-                 <PossibleContractsClientContainer
-                   possibleClientContracts = {p.client.possibleClientContracts}
-                   />
-               :
-                 <div>You cant buy enything for now!</div>
-             }
-           </div>
->>>>>>> c99a5d86a07d30d6351030286b56fb81e6572e36
         )
       case "POSSIBLE_CLIENT_CONTRACTS_LOADING":
         return (
