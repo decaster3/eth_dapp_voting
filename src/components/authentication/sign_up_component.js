@@ -79,10 +79,8 @@ export default class SignUpComponent extends Component {
                 </div>
               </div>
             </div>
-
           </div>
         </div>
-
       )
     }
     else {
