@@ -17,13 +17,13 @@ export default class MyContractsComponent extends Component {
               <tr key = {keyy}>
                 <td>{ingridient.name}</td>
                 <td>{ingridient.price}</td>
-                <td>{String(ingridient.isReady)}</td>
+                <td><i className="material-icons ">{ingridient.isReady ? "done" : "close"}</i></td>
               </tr>
           )
         })
       }
       var icon = contract.isReady ? "done" : "close";
-      console.log("render");
+
       return (
         <li key = {key}>
           <div className="collapsible-header valign-wrapper">
@@ -33,13 +33,13 @@ export default class MyContractsComponent extends Component {
           <div className="collapsible-body">
             {ingridientsView != null ?
               <div>
-              <h2 className="header orange-text">Ingredients</h2>
+              <h2 className="header orange-text">Components</h2>
               <br/>
               <table className="centered highlight">
                 <thead>
                   <tr>
                       <th>Name</th>
-                      <th>Ingredient Price</th>
+                      <th>Price</th>
                       <th>Is ready</th>
                   </tr>
                 </thead>
@@ -61,7 +61,7 @@ export default class MyContractsComponent extends Component {
         </li>
       )
     })
-    console.log(myContractsView);
+
     return (
       <ul className="collapsible" data-collapsible="accordion">
         {myContractsView}

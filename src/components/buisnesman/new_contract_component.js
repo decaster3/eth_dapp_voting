@@ -34,7 +34,7 @@ export default class NewContractComponent extends Component {
     this.setState({
       ingredients: ingredients
     })
-    Materialize.toast("Ingredient №" +(index + 1) + " " + ingredient.name + ' was deleted!', 3000);
+    Materialize.toast("Component №" +(index + 1) + " " + ingredient.name + ' was deleted!', 3000);
   }
 
   handleChangeIngrName(event){
@@ -89,12 +89,12 @@ export default class NewContractComponent extends Component {
           <div className="input-field col s5">
             <i className="material-icons prefix">add_shopping_cart</i>
             <input id="icon_prefix" type="text" className="validate" name = {index} value = {this.state.ingredients[index].name} onChange={this.handleChangeIngrName}/>
-            <label for="icon_prefix">Ingredient name</label>
+            <label for="icon_prefix">Component name</label>
           </div>
           <div className="input-field col s5">
             <i className="material-icons prefix">attach_money</i>
             <input id="icon_telephone" type="number" className="validate" name = {index} value = {this.state.ingredients[index].price} onChange={this.handleChangeIngrPrice}/>
-            <label for="icon_telephone">Ingredient price</label>
+            <label for="icon_telephone">Component price</label>
           </div>
           <a type="button" href="javascript:void(0);" onClick={() => this.removeIngridient(index)} className="secondary-content col s1 offset-s1 red-text"><i className="material-icons ">close</i></a>
 
@@ -105,7 +105,7 @@ export default class NewContractComponent extends Component {
 
     if (ingredients.length != 0)
       ingredients =   <ul className="collection with-header">
-          <li className="collection-header"><h4>Ingredients</h4></li>
+          <li className="collection-header"><h4>Components</h4></li>
           {ingredients}
         </ul>
 
@@ -153,7 +153,7 @@ export default class NewContractComponent extends Component {
               </div>
             :
               <div>
-              <h5 className="red-text">Add ingredients for creation</h5>
+              <h5 className="red-text">Add components for creation</h5>
               <a  type="button" onClick = {() => this.addIngridient()} className="btn-floating btn-large red  waves-effect waves-light">
                 <i className="large material-icons">add</i>
               </a>
