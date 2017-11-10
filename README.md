@@ -1,11 +1,15 @@
 
 https://dapp-16e5e.firebaseapp.com/ - working project
+ <br />
 Open with metamask in google chrome!!!
  <br />
 <h3>To start local:</h3>
 1) clone project
+ <br />
 2) $ npm install
+ <br />
 3) $ npm run start
+ <br />
 Open with metamask in google chrome!!!
  <br />
 <h1>En</h1>
@@ -41,8 +45,11 @@ Nodejs - backend
  <br />
 Firebase - hosting info about addresses of deployed products and registration roles of users: supplier, businessman and client.
 
- <br />
 
+ <br />
+ <br />
+<h3>Contributors:</h3>
+ <br />
 Rinat Khatipov
  <br />
 Roman Varnava
