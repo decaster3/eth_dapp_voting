@@ -9,6 +9,7 @@ export function createContract(name, finalCost, ingridients){
       var cost = web3.toWei(finalCost, 'ether');
       var adress = '';
       console.log(web3.eth);
+      dispatch({type: C.CONTRACT_MANIPULATION, contractCurrently: C.WAITING_FOR_CONTRACT})
       var contract = web3.eth.contract(A.abi)
       var contractInstance = contract.new(product_name, cost,
         {
@@ -25,6 +26,7 @@ export function createContract(name, finalCost, ingridients){
           } else {
             console.log("Address: " + newContract.address);
             adress = newContract.address
+            dispatch({type: C.CONTRACT_MANIPULATION, contractCurrently: C.NOT_WAITING_FOR_CONTRACT})
             let userContactsRef = firebase.database().ref().child('all_users').child(firebase.auth().currentUser.uid).child('contracts')
             let allContractsRef = firebase.database().ref().child('contracts')
             var pushh = allContractsRef.push()
@@ -54,7 +56,7 @@ export function createContract(name, finalCost, ingridients){
 }
 
 function addIngredient(contractInstance, ingredient_name, ingredient_cost) {
-  contractInstance.addIngredient(ingredient_name, web3.toWei(ingredient_cost, 'ether'), 
+  contractInstance.addIngredient(ingredient_name, web3.toWei(ingredient_cost, 'ether'),
     {from: web3.eth.coinbase, gas: A.gas_price},
      function(error, data) {
     if (error || data === 'undefined') {
