@@ -5,7 +5,7 @@ import { AppContainer } from 'react-hot-loader';
 import configureStore, { history } from './store/configureStore'
 import * as firebase from 'firebase';
 import { startListeningToAuth } from './actions/authentication/authentication_actions';
-var Web3 = require('web3');
+// var Web3 = require('web3');
 var C = require("./constants/eth_constants.js")
 
 var config = {

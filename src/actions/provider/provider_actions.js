@@ -1,6 +1,10 @@
 import * as firebase from 'firebase';
 let C = require("../../constants/provider/provider.js")
-var A = require("../../constants/eth_constants.js")
+import { default as contract } from 'truffle-contract'
+import product_sell_artifacts from '../../../build/contracts/ProductSell.json'
+// var A = require("../../constants/eth_constants.js")
+var ProductSell = contract(product_sell_artifacts);
+ProductSell.setProvider(web3.currentProvider);
 
 export function setPossibleContracts(){
   return function(dispatch, getState){
@@ -30,56 +34,57 @@ export function goToContract(contractId, nameIngridient){
       address = contract.val().address
     }).then( () => {
       console.log();
-    var contractInstance = web3.eth.contract(A.abi).at(address)
-    contractInstance.registerSupplier(firebase.auth().currentUser.uid, nameIngridient,
-      {from: web3.eth.coinbase, gas: A.gas_price},
-      function(error, data) {
-      if (error || data === 'undefined') {
-        console.log('Error occured: ' + error);
-      } else {
-        console.log('Add client, tx address: ' + data);
-        //
-        firebase.database().ref('contracts').child(contractId).once('value', function(contract){
-          if (contract.val().ingridients){
-            contract.val().ingridients.map((ing) => {
-              if(ing.name == nameIngridient){
-                ing.isReady = true
-                ing["provider_uid"] = firebase.auth().currentUser.uid
-                a = true
-              }
-              newIngridients.push(ing)
-            })
-          }
-        }).then( () => {
-          if(a){
-            firebase.database().ref('all_users').child(firebase.auth().currentUser.uid)
-              .child('contracts').push(contractId).then( () => {
-                firebase.database().ref('contracts').child(contractId).update({
-                  ingridients: newIngridients
-                }).then( () => {
-                  firebase.database().ref('contracts').child(contractId).once('value', function(contract){
-                    contract.val().ingridients.map((ing) => {
-                      if(ing.isReady == false){
-                        c = false
-                      }
-                    })
-                  }).then( () => {
-                    if(c){
-                      firebase.database().ref('contracts').child(contractId).update({
-                        isReady: true
-                      })
+      ProductSell.deployed().then(function(contractInstance){
+        contractInstance.registerSupplier(firebase.auth().currentUser.uid, nameIngridient,
+          {from: web3.eth.coinbase, gas: A.gas_price},
+          function(error, data) {
+            if (error || data === 'undefined') {
+              console.log('Error occured: ' + error);
+            } else {
+              console.log('Add client, tx address: ' + data);
+              //
+              firebase.database().ref('contracts').child(contractId).once('value', function(contract){
+                if (contract.val().ingridients){
+                  contract.val().ingridients.map((ing) => {
+                    if(ing.name == nameIngridient){
+                      ing.isReady = true
+                      ing["provider_uid"] = firebase.auth().currentUser.uid
+                      a = true
                     }
+                    newIngridients.push(ing)
                   })
-                }).then( () => {
-                    updatePossibleContracts(dispatch,getState)
-                })
+                }
+              }).then( () => {
+                if(a){
+                  firebase.database().ref('all_users').child(firebase.auth().currentUser.uid)
+                    .child('contracts').push(contractId).then( () => {
+                      firebase.database().ref('contracts').child(contractId).update({
+                        ingridients: newIngridients
+                      }).then( () => {
+                        firebase.database().ref('contracts').child(contractId).once('value', function(contract){
+                          contract.val().ingridients.map((ing) => {
+                            if(ing.isReady == false){
+                              c = false
+                            }
+                          })
+                        }).then( () => {
+                          if(c){
+                            firebase.database().ref('contracts').child(contractId).update({
+                              isReady: true
+                            })
+                          }
+                        })
+                      }).then( () => {
+                          updatePossibleContracts(dispatch,getState)
+                      })
+                    })
+                }
               })
-          }
-        })
-        //
-      }
-    });
-  })
+            //
+            }
+          });
+      })
+    })
   }
 }
 

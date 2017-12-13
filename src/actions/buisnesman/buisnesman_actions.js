@@ -1,6 +1,11 @@
 import * as firebase from 'firebase';
+// import { default as Web3} from 'web3';
+import { default as contract } from 'truffle-contract'
+import product_sell_artifacts from '../../../build/contracts/ProductSell.json'
 let C = require("../../constants/buisnesman/buisnesman.js")
-var A = require("../../constants/eth_constants.js")
+// var A = require("../../constants/eth_constants.js")
+var ProductSell = contract(product_sell_artifacts);
+ProductSell.setProvider(web3.currentProvider);
 
 export function createContract(name, finalCost, ingridients){
   return function(dispatch, getState){
@@ -10,7 +15,8 @@ export function createContract(name, finalCost, ingridients){
       var adress = '';
       console.log(web3.eth);
       dispatch({type: C.CONTRACT_MANIPULATION, contractCurrently: C.WAITING_FOR_CONTRACT})
-      var contract = web3.eth.contract(A.abi)
+      // var contract = web3.eth.contract(A.abi)
+
       var ing_names = []
       ingridients.map(ing => {
         ing_names.push(ing.name)
@@ -19,18 +25,21 @@ export function createContract(name, finalCost, ingridients){
       ingridients.map(ing => {
         ing_prices.push(web3.toWei(ing.price, 'ether'));
       })
-      var contractInstance = contract.new(product_name, cost, ing_names, ing_prices,
+      var contractInstance;
+      ProductSell.deployed().then(function(contractInstance) {
+        contractInstance.addProduct(product_name, cost, ing_names, ing_prices,
         {
           from: web3.eth.coinbase,
-          data: A.bytecode,
           gas: A.gas_price
-        }, function(error, newContract) {
+        }, function(error, addr) {
         if (error) {
           dispatch({type: C.CONTRACT_MANIPULATION, contractCurrently: C.NOT_WAITING_FOR_CONTRACT})
           alert("When deploying contract error has occured: " + error)
           console.log("When deploying contract error has occured: " + error);
         } else {
           console.log('Deployed.');
+          var newContract;
+          newContract.address = contractInstance.getProduct();
           if (!newContract.address) {
             console.log("Tx hash: " + newContract.transactionHash);
           } else {
